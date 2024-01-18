@@ -1,0 +1,39 @@
+---
+import StudiesItem from "./StudiesItem.astro"
+
+const STUDIES = [
+    {
+        date: "Abril 2022",
+        title: "JavaScript Moderno",
+        description:
+        "JavaScript, HTML, CSS y bases de Node"
+
+    },
+    {
+        date: "Octubre 2023",
+        title: "React",
+        description:
+        "React, MongoDB, Express, Node, Redux, Git, Tailwind CSS, Astro, Next.js",
+    },
+    {
+        date: "Diciembre 2023",
+        title: "React Avanzado",
+        description:
+        "TypeScript, React Native, Expo, Git, GitHub",
+    },
+    {
+        date: "Actualmente",
+        title: "Node Avanzado",
+        description:
+        "Node, JWT, PWA, Git, GitHub, Socket",
+    }
+]
+---
+
+<ol class="ml-3 py-1 relative border-s border-gray-200 dark:border-gray-700">
+    {
+        STUDIES.map((studies) => (
+                <StudiesItem {...studies}/>
+            ))
+    }
+</ol>
