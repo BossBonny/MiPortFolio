@@ -9,17 +9,35 @@ import TailWindIcon from "../icons/TailWind.astro";
 import AxiosIcon from "../icons/Axios.astro";
 import ExpressIcon from "../icons/Express.astro";
 import GitHubIcon from "../icons/GitHub.astro";
+import TSIcon from "@/icons/TypeScript.astro";
+
+import { Image } from "astro:assets";
 
 const PROYECTOS = [
+{
+    title: "Like-Threads",
+    descripcion: "Aplicación para dispositivos moviles (IOS y Android), hecha con React Native, Expo y TypeScript, la aplicación está basada en la interfaz de la aplicación Threads, usando style components, usando usuarios y posts aleatorios mediante una libreria que genera estos datos aleatoriamente (la libreria se llama Joker)",
+    funcionalidades: ["Animaciones interactivas", "Expo-router",
+        "Style Components", "React Navigation", "Expo vector-icons"],
+    imagenes:["/src/images/Like-Threads-1.webp","/src/images/Like-Threads-2.webp"],
+    link: "#",
+    github: "https://github.com/BossBonny/Like_Threads",
+    tags: ["React", "Expo", "TypeScript", "Node"],
+    tipo: "MovilApp"
+},
 {
     title: "AppTail",
     descripcion: "Aplicación para dispositivos moviles (IOS y Android), hecha con React Native y Expo para el FrontEnd, además de un pequeño BackEnd realizado con Node, Express y MongoDB. Esté proyecto lo desarrolle inspirado en un proyecto anterior, por que tenia curiosidad de usar React Native con Expo, ya que corre tanto en IOS como en Android, el proceso de desarollo fue interesante y considero React Native y Expo grandes herramientas",
     funcionalidades: ["Login con Usuarios y validación","Creación de Usuarios","Creación de tareas", "Agregar Colaboradores a las tareas",
         "Resumen de Tareas con iconos", "Editar y eliminar la Tarea", "Barra de busqueda funcional"],
-    link: "#",
+    imagenes:["/src/images/login-app.webp", "/src/images/Login-App-Correcto.webp",
+    "/src/images/inicio-app.webp", "/src/images/InicioApp-Modal.webp",
+    "/src/images/searchbar-app.webp", "/src/images/Task-App-Modal.webp"
+    ],
+        link: "#",
     github: "https://github.com/BossBonny/AppTail_App",
-    images: ["/public/imgs/login-app.webp", "/public/imgs/inicio-app.webp", "/public/imgs/searchbar-app.webp"],
     tags: ["React", "Expo", "JavaScript", "Node","MongoDB", "Axios", "Express", "Cors"],
+    tipo: "MovilApp"
 },
 {
     title: "UpTask",
@@ -27,34 +45,37 @@ const PROYECTOS = [
     funcionalidades: ["Login con Usuarios y validación","Creación de Usuarios", , "Funcionalidad de recuperar Contraseña", 
         "Actualización inmediata de los proyectos mediante Socket.io","Creación de proyectos y tareas", "Agregar Colaboradores a los proyectos",
         "Editar y eliminar proyectos y tareas"],
+    imagenes:["/src/images/UpTask-Login.webp","/src/images/UpTask-Inicio.webp","/src/images/UpTask-Proyecto.webp","/src/images/UpTask-CrearTarea.webp"],
     link: "#",
     github: "https://github.com/BossBonny/Up_Task_MERN_frontend",
-    images: ["/public/imgs/UpTask-Login.webp", "/public/imgs/UpTask-Inicio.webp","/public/imgs/UpTask-Proyecto.webp"],
     tags: ["React", "JavaScript", "Node", "MongoDB", "TailWindCSS", "Vite", "Axios","Express"],
+    tipo: "WebPage"
 },
 {
     title: "Buscador-Bebidas",
     descripcion: "Página web para buscar recetas de bebidas alcoholicás, con distintas categorías para elegir la combinación que te apetezca, Adémas viene la receta que debes usar para la preparación, todos los datos han sido sacados de una API.",
     funcionalidades: ["Buscador de bebida por categoría y nombre","Receta de cada Bebida listada"],
+    imagenes:["/src/images/BuscadorBebidas-inicio.webp","/src/images/BuscadorBebidas-search.webp","/src/images/BuscadorBebidas-search2.webp","/src/images/BuscadorBebidas-Receta.webp"],
     link: "#",
     github: "https://github.com/BossBonny/BuscadorBebidas",
-    images: ["/public/imgs/BuscadorBebidas-inicio.webp","/public/imgs/BuscadorBebidas-search.webp","/public/imgs/BuscadorBebidas-Receta.webp"],
     tags: ["React","JavaScript","Node","Vite"],
+    tipo: "WebPage"
 },
 {
     title: "Conversor-Cripto",
     descripcion: "Página web para ver el valor de una selección de criptomonedas (BitCoin, Ethereum, Solana, etc...) a distintos tipos de divisas (Euro, dollar, yen, etc...). Para la realización de esta aplicación use una API gratuita que me suministraba los datos.",
     funcionalidades: ["Saber el valor de cada Criptomoneda en la divisa requerida"],
+    imagenes:["/src/images/Criptos-Inicio.webp","/src/images/Criptos-search.webp"],
     link: "#",
     github: "https://github.com/BossBonny/Conversor-Criptos",
-    images: ["/public/imgs/Criptos-Inicio.webp","/public/imgs/Criptos-search.webp"],
     tags: ["React","JavaScript","Node","Vite"],
+    tipo: "WebPage"
 },
 ];
 ---
 
 <ol class="relative border-gray-200 dark:border-gray-700 mb-20 mt-50">
-    {PROYECTOS.map(({title, descripcion, tags, images, funcionalidades,github }) => 
+    {PROYECTOS.map(({title, descripcion, tags, funcionalidades,github, imagenes, tipo }) => 
         <article class="mb-20">
             <div>
                 <h1 class="text-xl font-semibold text-purple-400 mb-5">{title}</h1>
@@ -81,6 +102,7 @@ const PROYECTOS = [
                             {tag === "React" && <RNIcon/>}
                             {tag === "Expo" && <ExpoIcon/>}
                             {tag === "JavaScript" && <JSIcon/>}
+                            {tag === "TypeScript" && <TSIcon/>}
                             {tag === "MongoDB" && <MDBIcon/>}
                             {tag === "Node" && <NodeIcon/>}
                             {tag === "TailWindCSS" && <TailWindIcon/>}
@@ -91,15 +113,22 @@ const PROYECTOS = [
                     )}
                 </ul>
             </div>
-            <nav class="flex gap-4 mt-8 flex-wrap">
-                {title === "AppTail" && images.map( img => 
-                    <img class="h-[300px] w-[150px] lg:h-[550px] lg:w-[250px]" src={img} alt="captura de pantalla del proyecto"/>)}
-                {title !== "AppTail" && images.map( img => 
-                    <img class="h-50 w-40 lg:h-70 lg:w-60" src={img} alt="captura de pantalla del proyecto"/>)}
-            </nav>
-            <div class="my-20 items-center flex gap-x-10">
+            {tipo === "MovilApp" ? (
+                <div class="flex flex-wrap gap-x-5 px-5 gap-y-4 justify-center">
+                    {imagenes.map( (img) => 
+                        <img class="h-60 w-25 lg:h-[600px] lg:w-[300px]" src={img} alt={`Captura de pantalla del proyecto ${img}`}/>
+                    )}          
+                </div>
+            ):(
+                <div class="flex flex-wrap gap-x-5 px-5 gap-y-4 justify-center">
+                    {imagenes.map( (img) => 
+                        <img class="h-[175px] w-[175px] lg:h-[400px] lg:w-[350px]" src={img} alt={`Captura de pantalla del proyecto ${img}`}/>
+                    )}          
+                </div>
+            )}
+            <div class="my-20 items-center flex  gap-x-5 lg:gap-x-10">
                 <h1 class="text-indigo-500 text-md font-semibold">Mira el codigo en mi github: </h1>
-                <a target="_blank"  rel="noopener" class="text-xl font-bold flex flex-wrap" href={github}><GitHubIcon class="size-6 mr-1"/>{title}</a>
+                <a target="_blank"  rel="noopener" class="text-xl font-bold flex flex-row items-center" href={github}><GitHubIcon class="size-6 mr-1"/>{title}</a>
             </div>
             <hr class="h-px my-20 bg-gray-200 border-0 dark:bg-gray-700"/>
         </article>

@@ -1,0 +1,29 @@
+---
+import Badge from "@/components/Badge.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+import SocialPill from "@/components/SocialPill.astro";
+import LinkedIn from "@/icons/LinkedIn.astro";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+    description="Catalogo de componentes del portfolio"
+    title="Design system portfolio.dev"
+>
+    <SectionContainer class="py-44 pb-32 flex-col gap-y-10">
+        <article class="mb-10">
+            <h1 class="mb-4">&lt;Badge&gt;</h1>
+            <Badge>TailWind</Badge>
+            <Badge>TailWind</Badge>
+        </article>
+        <article class="mb-10">
+            <h1 class="mb-4">&lt SocialPill /&gt;</h1>
+            <div class="flex">
+                <SocialPill href="https://www.linkedin.com/in/johan-ariel/">
+                    <LinkedIn class="size-4 md:size-6"/>
+                    LinkedIn
+                </SocialPill>
+            </div>
+        </article>
+    </SectionContainer>
+</Layout>
